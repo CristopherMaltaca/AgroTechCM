@@ -1,39 +1,41 @@
+import type { Maquina } from "./types/Maquina";
+import MaquinaCard from "./components/MaquinaCard";
+
 function App() {
+  const maquinas: Maquina[] = [
+    {
+      id: 1,
+      nome: "Trator 01",
+      status: "Em operação",
+      horasTrabalhadas: 127
+    },
+    {
+      id: 2,
+      nome: "Trator 02",
+      status: "Parada",
+      horasTrabalhadas: 84
+    },
+    {
+      id: 3,
+      nome: "Colheitadeira 01",
+      status: "Em operação",
+      horasTrabalhadas: 231
+    }
+  ];
+
   return (
     <div>
-      <header>
-        <h1>AgroControl</h1>
-        <p>Monitoramento de máquinas agrícolas</p>
-      </header>
+      <h1>AgroControl</h1>
+      <h2>Máquinas</h2>
 
-      <main>
-        <section>
-          <div>
-            <strong>12</strong>
-            <span>Máquinas</span>
-          </div>
-
-          <div>
-            <strong>8</strong>
-            <span>Em operação</span>
-          </div>
-
-          <div>
-            <strong>4</strong>
-            <span>Paradas</span>
-          </div>
-        </section>
-
-        <section>
-          <h2>Máquinas</h2>
-
-          <div>
-            <p>Trator 01 — Em operação</p>
-            <p>Trator 02 — Em operação</p>
-            <p>Colheitadeira 01 — Parada</p>
-          </div>
-        </section>
-      </main>
+      <div>
+        {maquinas.map((maquina) => (
+          <MaquinaCard
+            key={maquina.id}
+            maquina={maquina}
+          />  
+        ))}
+      </div>
     </div>
   );
 }
